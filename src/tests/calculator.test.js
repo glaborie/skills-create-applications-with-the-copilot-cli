@@ -170,5 +170,169 @@ describe('Calculator Basic Operations', () => {
     test('20 / 5 should equal 4', () => {
       expect(calculate('20 / 5')).toBe(4);
     });
+
+    test('5 % 2 should equal 1 (modulo)', () => {
+      expect(calculate('5 % 2')).toBe(1);
+    });
+
+    test('2 ^ 3 should equal 8 (power)', () => {
+      expect(calculate('2 ^ 3')).toBe(8);
+    });
+
+    test('√16 should equal 4 (square root)', () => {
+      expect(calculate('√16')).toBe(4);
+    });
+  });
+
+  // Modulo tests
+  describe('Modulo', () => {
+    test('should calculate 5 % 2 to equal 1', () => {
+      expect(calculate('5 % 2')).toBe(1);
+    });
+
+    test('should calculate 10 % 3 to equal 1', () => {
+      expect(calculate('10 % 3')).toBe(1);
+    });
+
+    test('should calculate 8 % 4 to equal 0', () => {
+      expect(calculate('8 % 4')).toBe(0);
+    });
+
+    test('should calculate 15 % 7 to equal 1', () => {
+      expect(calculate('15 % 7')).toBe(1);
+    });
+
+    test('should handle modulo with negative numbers', () => {
+      expect(calculate('-10 % 3')).toBe(-1);
+    });
+
+    test('should handle modulo with decimal numbers', () => {
+      expect(calculate('5.5 % 2')).toBeCloseTo(1.5, 2);
+    });
+
+    test('should handle zero remainder', () => {
+      expect(calculate('100 % 10')).toBe(0);
+    });
+
+    test('should handle modulo where dividend is smaller', () => {
+      expect(calculate('3 % 5')).toBe(3);
+    });
+  });
+
+  // Exponentiation tests
+  describe('Exponentiation', () => {
+    test('should calculate 2 ^ 3 to equal 8', () => {
+      expect(calculate('2 ^ 3')).toBe(8);
+    });
+
+    test('should calculate 2 ** 3 to equal 8 (using ** notation)', () => {
+      expect(calculate('2 ** 3')).toBe(8);
+    });
+
+    test('should calculate 5 ^ 2 to equal 25', () => {
+      expect(calculate('5 ^ 2')).toBe(25);
+    });
+
+    test('should calculate 10 ^ 0 to equal 1', () => {
+      expect(calculate('10 ^ 0')).toBe(1);
+    });
+
+    test('should calculate 2 ^ 8 to equal 256', () => {
+      expect(calculate('2 ^ 8')).toBe(256);
+    });
+
+    test('should handle negative exponents', () => {
+      expect(calculate('2 ^ -2')).toBe(0.25);
+    });
+
+    test('should handle fractional exponents', () => {
+      expect(calculate('4 ^ 0.5')).toBe(2);
+    });
+
+    test('should handle negative base with even exponent', () => {
+      expect(calculate('(-2) ^ 2')).toBe(4);
+    });
+
+    test('should handle negative base with odd exponent', () => {
+      expect(calculate('(-2) ^ 3')).toBe(-8);
+    });
+
+    test('should handle decimal bases', () => {
+      expect(calculate('1.5 ^ 2')).toBe(2.25);
+    });
+  });
+
+  // Square root tests
+  describe('Square Root', () => {
+    test('should calculate √16 to equal 4', () => {
+      expect(calculate('√16')).toBe(4);
+    });
+
+    test('should calculate sqrt(16) to equal 4', () => {
+      expect(calculate('sqrt(16)')).toBe(4);
+    });
+
+    test('should calculate √25 to equal 5', () => {
+      expect(calculate('√25')).toBe(5);
+    });
+
+    test('should calculate √100 to equal 10', () => {
+      expect(calculate('√100')).toBe(10);
+    });
+
+    test('should calculate √1 to equal 1', () => {
+      expect(calculate('√1')).toBe(1);
+    });
+
+    test('should calculate √0 to equal 0', () => {
+      expect(calculate('√0')).toBe(0);
+    });
+
+    test('should handle square root of decimal numbers', () => {
+      expect(calculate('√2')).toBeCloseTo(1.414, 2);
+    });
+
+    test('should handle square root of large numbers', () => {
+      expect(calculate('√144')).toBe(12);
+    });
+
+    test('should handle square root in expressions', () => {
+      expect(calculate('√16 + 2')).toBe(6);
+    });
+
+    test('should throw error for square root of negative numbers', () => {
+      expect(() => calculate('√-16')).toThrow('Square root of negative numbers is not allowed');
+    });
+
+    test('should throw error for sqrt(-1)', () => {
+      expect(() => calculate('sqrt(-1)')).toThrow('Square root of negative numbers is not allowed');
+    });
+  });
+
+  // Combined operations with new features
+  describe('Combined Operations with New Features', () => {
+    test('should handle modulo in complex expression', () => {
+      expect(calculate('10 + 5 % 2')).toBe(11);
+    });
+
+    test('should handle exponentiation in complex expression', () => {
+      expect(calculate('2 ^ 3 + 5')).toBe(13);
+    });
+
+    test('should handle square root in complex expression', () => {
+      expect(calculate('√16 * 2')).toBe(8);
+    });
+
+    test('should handle all new operations together', () => {
+      expect(calculate('√16 + 2 ^ 3 + 10 % 3')).toBe(13);
+    });
+
+    test('should follow order of operations with new features', () => {
+      expect(calculate('2 + 3 ^ 2')).toBe(11);
+    });
+
+    test('should handle nested operations', () => {
+      expect(calculate('(√16 + 1) * 2')).toBe(10);
+    });
   });
 });
