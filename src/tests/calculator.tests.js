@@ -179,7 +179,7 @@ describe('Calculator Basic Operations', () => {
       expect(calculate('2 ^ 3')).toBe(8);
     });
 
-    test('√16 should equal 4 (square root)', () => {
+    test('√16 should equal 4 (squareroot)', () => {
       expect(calculate('√16')).toBe(4);
     });
   });
@@ -288,19 +288,19 @@ describe('Calculator Basic Operations', () => {
       expect(calculate('√0')).toBe(0);
     });
 
-    test('should handle square root of decimal numbers', () => {
+    test('should handle squareroot of decimal numbers', () => {
       expect(calculate('√2')).toBeCloseTo(1.414, 2);
     });
 
-    test('should handle square root of large numbers', () => {
+    test('should handle squareroot of large numbers', () => {
       expect(calculate('√144')).toBe(12);
     });
 
-    test('should handle square root in expressions', () => {
+    test('should handle squareroot in expressions', () => {
       expect(calculate('√16 + 2')).toBe(6);
     });
 
-    test('should throw error for square root of negative numbers', () => {
+    test('should throw error for squareroot of negative numbers', () => {
       expect(() => calculate('√-16')).toThrow('Square root of negative numbers is not allowed');
     });
 
@@ -319,7 +319,7 @@ describe('Calculator Basic Operations', () => {
       expect(calculate('2 ^ 3 + 5')).toBe(13);
     });
 
-    test('should handle square root in complex expression', () => {
+    test('should handle squareroot in complex expression', () => {
       expect(calculate('√16 * 2')).toBe(8);
     });
 
